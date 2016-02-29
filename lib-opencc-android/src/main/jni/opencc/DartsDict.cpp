@@ -18,7 +18,7 @@
 
 #include "BinaryDict.hpp"
 #include "DartsDict.hpp"
-#include "darts.h"
+#include "deps/darts-clone/darts.h"
 #include "Lexicon.hpp"
 
 using namespace opencc;

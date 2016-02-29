@@ -24,7 +24,7 @@
 #include "MaxMatchSegmentation.hpp"
 #include "TextDict.hpp"
 
-#include "document.h"
+#include "deps/rapidjson-0.11/document.h"
 
 #include <unordered_map>
 

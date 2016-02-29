@@ -18,7 +18,7 @@
 
 #include <cmath>
 #include <unordered_map>
-#include "darts.h"
+#include "deps/darts-clone/darts.h"
 
 #include "PhraseExtract.hpp"
 

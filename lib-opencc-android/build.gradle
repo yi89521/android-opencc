@@ -67,7 +67,7 @@ task stripNativeLibs(dependsOn: copyNativeLibs) {
     ["debug", "release"].each { buildType ->
         APP_ABIS.each { abi ->
             def libs = []
-            libs.addAll(BOOST_SHARED_LIBS)
+            //libs.addAll(BOOST_SHARED_LIBS)
             libs += "crystax"
 
             libs.each { name ->
