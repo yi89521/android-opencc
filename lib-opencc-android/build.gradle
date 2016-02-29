@@ -25,9 +25,21 @@ model {
         cppFlags.add("-std=c++11")
         cppFlags.add("-fexceptions")
         cppFlags.add("-frtti")
-        cppFlags.add("-I" + getGoogleTestIncDir())
         ldLibs.addAll BOOST_SHARED_LIBS
         stl = "gnustl_shared"
+    }
+
+    android.productFlavors {
+        APP_ABIS.each { abi ->
+            create(getFlavorName(abi)) {
+                ndk.with {
+                    abiFilters.add(abi)
+                    getPrebuiltLibPaths(abi).each { path ->
+                        ldFlags.add("-L" + path)
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -48,9 +60,6 @@ task copyNativeLibs {
     ["debug", "release"].each { buildType ->
         APP_ABIS.each { abi ->
             def libs = [:]
-//            BOOST_SHARED_LIBS.each { name ->
-//                libs[name] = "${getGoogleTestLibDir(abi)}/lib${name}.so"
-//            }
             libs.crystax = getLibCrystax(abi)
 
             libs.each { name, file ->
@@ -214,12 +223,4 @@ def getLibCrystaxDir(abi) {
 
 def getLibCrystax(abi) {
     return "${getLibCrystaxDir(abi)}/libcrystax.so"
-}
-
-def getGoogleTestDir() {
-    return "${getCrystaxNdkDir()}/sources/third_party/googletest/googletest"
-}
-
-def getGoogleTestIncDir() {
-    return "${getGoogleTestDir()}/include"
 }
