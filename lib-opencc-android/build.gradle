@@ -15,7 +15,12 @@ model {
      */
     android.ndk {
         moduleName = "lib-opencc-android"
-        stl = "gnustl_shared"
+        ldLibs.addAll(["test", "log"])
+//        toolchain = "clang"
+//        toolchainVersion = "3.6"
+        cppFlags.add("-std=c++11") // Add provisions to allow C++11 functionality
+        cppFlags.add("-fexceptions")
+        stl = "stlport_shared"
     }
 }
 
