@@ -2,6 +2,9 @@ package com.zqc.opencc.android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import com.zqc.opencc.android.lib.ChineseConverter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,10 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    }
+        TextView textView = (TextView) findViewById(R.id.text);
 
-
-    static {
-        System.loadLibrary("lib-opencc-android");
+        ChineseConverter chineseConverter = ChineseConverter.getInstance();
     }
 }

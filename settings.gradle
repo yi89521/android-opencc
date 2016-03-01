@@ -1,1 +1,2 @@
-include ':app', ':lib-opencc-android'
+include ':lib-opencc-android'
+include ':app'
