@@ -14,7 +14,7 @@ Java_com_zqc_opencc_android_lib_ChineseConverter_convert(JNIEnv *env, jobject in
 
     const string name("s2hk.json");
     converter = config.NewFromFile(name);
-    std::string string1 = converter->Convert(text);
+    std::string converted = converter->Convert(text);
 
-    return  env->NewStringUTF(string1.c_str());
+    return  env->NewStringUTF(converted.c_str());
 }

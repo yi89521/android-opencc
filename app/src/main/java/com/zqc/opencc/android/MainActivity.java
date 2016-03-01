@@ -2,6 +2,7 @@ package com.zqc.opencc.android;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.zqc.opencc.android.lib.ChineseConverter;
@@ -13,8 +14,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView textView = (TextView) findViewById(R.id.text);
+        final TextView textView = (TextView) findViewById(R.id.text);
 
-        ChineseConverter chineseConverter = ChineseConverter.getInstance();
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ChineseConverter chineseConverter = ChineseConverter.getInstance();
+                textView.setText(chineseConverter.convert("张其川", "CN"));
+            }
+        });
     }
 }
