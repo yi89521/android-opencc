@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.zqc.opencc.android.lib.ChineseConverter;
+import com.zqc.opencc.android.lib.ConversionType;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ChineseConverter chineseConverter = ChineseConverter.getInstance();
-                textView.setText(chineseConverter.convert("张其川", "CN"));
+                textView.setText(ChineseConverter.convert("张其川", ConversionType.S2T, getAssets()));
             }
         });
     }

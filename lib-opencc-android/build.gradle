@@ -16,7 +16,7 @@ model {
     android.ndk {
         moduleName = "lib-opencc-android"
         cppFlags.add("-fexceptions")
-        ldLibs.addAll(["atomic", "log"])
+        ldLibs.addAll(["atomic", "log", "android"])
         stl = "c++_static"
     }
 
