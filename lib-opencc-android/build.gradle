@@ -17,7 +17,7 @@ model {
         moduleName = "lib-opencc-android"
         cppFlags.add("-fexceptions")
         ldLibs.addAll(["atomic", "log", "android"])
-        stl = "c++_static"
+        stl = "c++_shared"
     }
 
 }

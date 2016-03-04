@@ -17,10 +17,12 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView textView = (TextView) findViewById(R.id.text);
 
+        ChineseConverter.initialize(getApplicationContext());
+
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(ChineseConverter.convert("张其川", ConversionType.S2T, getAssets()));
+                textView.setText(ChineseConverter.convert("张其川", ConversionType.S2T, getApplicationContext()));
             }
         });
     }
