@@ -14,20 +14,24 @@ import java.io.OutputStream;
  * Created by zhangqichuan on 29/2/16.
  */
 public class ChineseConverter {
-    public static String convert(String text, ConversionType conversionType, Context context){
-        File dataFolder = new File(context.getFilesDir() + "/data");
+    public static String convert(String text, ConversionType conversionType, Context context) {
+        File lastDataFile = new File(context.getFilesDir() + "/openccdata/zFinished");
+        if (!lastDataFile.exists()) {
+            throw new RuntimeException("opencc data folder is not yet inistalized, please call ChineseConverter.initialize() at least once");
+        }
+        File dataFolder = new File(context.getFilesDir() + "/openccdata");
         return convert(text, conversionType.getValue(), dataFolder.getAbsolutePath());
     }
 
     private static native String convert(String text, String configFile, String absoluteDataFolderPath);
 
     public static void initialize(Context context) {
-        copyFolder("data", context);
+        copyFolder("openccdata", context);
     }
 
     private static void copyFolder(String folderName, Context context) {
         File fileFolderOnDisk = new File(context.getFilesDir() + "/" + folderName);
-        if(fileFolderOnDisk.exists()){
+        if (fileFolderOnDisk.exists()) {
             return;
         }
         AssetManager assetManager = context.getAssets();
@@ -43,11 +47,11 @@ public class ChineseConverter {
                 OutputStream out = null;
                 try {
                     in = assetManager.open(folderName + "/" + filename);
-                    if(!fileFolderOnDisk.exists()){
+                    if (!fileFolderOnDisk.exists()) {
                         fileFolderOnDisk.mkdirs();
                     }
                     File outFile = new File(fileFolderOnDisk.getAbsolutePath(), filename);
-                    if(!outFile.exists()){
+                    if (!outFile.exists()) {
                         outFile.createNewFile();
                     }
                     out = new FileOutputStream(outFile);
@@ -82,6 +86,7 @@ public class ChineseConverter {
             out.write(buffer, 0, read);
         }
     }
+
     static {
         System.loadLibrary("lib-opencc-android");
     }
