@@ -14,10 +14,17 @@ import java.io.OutputStream;
  * Created by zhangqichuan on 29/2/16.
  */
 public class ChineseConverter {
+
+    /***
+     * @param text           the text to be converted to
+     * @param conversionType the conversion type
+     * @param context        android context
+     * @return the converted text
+     */
     public static String convert(String text, ConversionType conversionType, Context context) {
         File lastDataFile = new File(context.getFilesDir() + "/openccdata/zFinished");
         if (!lastDataFile.exists()) {
-            throw new RuntimeException("opencc data folder is not yet inistalized, please call ChineseConverter.initialize() at least once");
+            initialize(context);
         }
         File dataFolder = new File(context.getFilesDir() + "/openccdata");
         return convert(text, conversionType.getValue(), dataFolder.getAbsolutePath());
@@ -25,7 +32,7 @@ public class ChineseConverter {
 
     private static native String convert(String text, String configFile, String absoluteDataFolderPath);
 
-    public static void initialize(Context context) {
+    private static void initialize(Context context) {
         copyFolder("openccdata", context);
     }
 
