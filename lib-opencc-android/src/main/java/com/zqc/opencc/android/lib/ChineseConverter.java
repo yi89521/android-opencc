@@ -30,6 +30,23 @@ public class ChineseConverter {
         return convert(text, conversionType.getValue(), dataFolder.getAbsolutePath());
     }
 
+    /***
+     * Clear the dictionary data folder, only call this method when update the dictionary data.
+     * @param context
+     */
+    public static void clearDictDataFolder(Context context){
+        File dataFolder = new File(context.getFilesDir() + "/openccdata");
+        deleteRecursive(dataFolder);
+    }
+
+    private static void deleteRecursive(File fileOrDirectory) {
+        if (fileOrDirectory.isDirectory())
+            for (File child : fileOrDirectory.listFiles())
+                deleteRecursive(child);
+
+        fileOrDirectory.delete();
+    }
+
     private static native String convert(String text, String configFile, String absoluteDataFolderPath);
 
     private static void initialize(Context context) {
