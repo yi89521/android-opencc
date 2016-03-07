@@ -13,7 +13,7 @@ import com.zqc.opencc.android.lib.ConversionType;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ConversionType currentConversionType = ConversionType.T2S;
+    private ConversionType currentConversionType = ConversionType.TW2SP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        currentConversionType = ConversionType.HK2S;
+                        currentConversionType = ConversionType.TW2SP;
                         break;
                     case 1:
                         currentConversionType = ConversionType.S2HK;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                         currentConversionType = ConversionType.TW2S;
                         break;
                     case 9:
-                        currentConversionType = ConversionType.TW2SP;
+                        currentConversionType = ConversionType.HK2S;
                         break;
                 }
             }
