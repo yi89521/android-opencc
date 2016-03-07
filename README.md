@@ -44,7 +44,7 @@ To use Chinese converter is easy, just call `ChineseConverter.convert(originalTe
 - TW2S, Traditional Chinese (Taiwan Standard) to Simplified Chinese 臺灣正體到簡體
 - TW2SP, Traditional Chinese (Taiwan Standard) to Simplified Chinese with Mainland Chinese idiom 繁體（臺灣正體標準）到簡體並轉換爲中國大陸常用詞彙
 
-# Notice
+# Explanation
 
 android-opencc leverages on the original OpenCC project and invoke the native code via JNI, the text phrase dictionary files are shipped in the assets folder. Android NDK does not provide means to create and read file streams from directly from assets folder, therefore the dictionary files are then copied to the application data folder in the first call of `ChineseConverter.convert()`
 
@@ -53,6 +53,10 @@ If you need to update the dictionary files in the assets folder, please remember
 # Compilation
 
 You need the Android NDK for compilation, please download the [NDK](http://developer.android.com/ndk/downloads/index.html) and configure the path to NDK in `local.properties` file.
+
+# Example apk
+
+[Download here](https://www.dropbox.com/s/0qzcmchqf5hqyit/android-opencc-0.6.0.apk?dl=1)
 
 Feel free to feedback if there are any issues, and hope this library can be useful for you.
 
