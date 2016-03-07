@@ -38,21 +38,6 @@ model {
             ldLibs.addAll(["atomic", "log", "android"])
             stl = "c++_shared"
         }
-
-        sources {
-            main {
-                java {
-                    source {
-                        srcDir "src"
-                    }
-                }
-                jni {
-                    source {
-                        srcDir "src"
-                    }
-                }
-            }
-        }
     }
 }
 
