@@ -1,26 +1,82 @@
 package com.zqc.opencc.android;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.zqc.opencc.android.lib.ChineseConverter;
 import com.zqc.opencc.android.lib.ConversionType;
 
 public class MainActivity extends AppCompatActivity {
 
+    private ConversionType currentConversionType = ConversionType.T2S;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView textView = (TextView) findViewById(R.id.text);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.conversion_type_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
+                        currentConversionType = ConversionType.HK2S;
+                        break;
+                    case 1:
+                        currentConversionType = ConversionType.S2HK;
+                        break;
+                    case 2:
+                        currentConversionType = ConversionType.S2T;
+                        break;
+                    case 3:
+                        currentConversionType = ConversionType.S2TW;
+                        break;
+                    case 4:
+                        currentConversionType = ConversionType.S2TWP;
+                        break;
+                    case 5:
+                        currentConversionType = ConversionType.T2HK;
+                        break;
+                    case 6:
+                        currentConversionType = ConversionType.T2S;
+                        break;
+                    case 7:
+                        currentConversionType = ConversionType.T2TW;
+                        break;
+                    case 8:
+                        currentConversionType = ConversionType.TW2S;
+                        break;
+                    case 9:
+                        currentConversionType = ConversionType.TW2SP;
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        final EditText textView = (EditText) findViewById(R.id.text);
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                textView.setText(ChineseConverter.convert("张其川", ConversionType.S2T, getApplicationContext()));
+                String originalText = textView.getText().toString();
+                textView.setText(ChineseConverter.convert(originalText,
+                        currentConversionType, getApplicationContext()));
             }
         });
     }

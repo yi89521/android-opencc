@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Android-OpenCC</string>
+    <string name="test_text">南山有台，北山有萊。樂隻君子，邦家之基。樂隻君子，萬壽無期\n南山有桑，北山有楊。樂隻君子，邦家之光。樂隻君子，萬壽無疆\n南山有杞，北山有李。樂隻君子，民之父母。樂隻君子，德音不已。\n南山有栲，北山有杻。樂隻君子，遐不眉壽。樂隻君子，德音是茂。\n南山有枸，北山有楰。樂隻君子，遐不黄耇。樂隻君子，保艾爾後。</string>
+    <string-array name="conversion_type_array">
+        <item>香港繁體到簡體</item>
+        <item>簡體到香港繁體</item>
+        <item>簡體到繁體</item>
+        <item>簡體到臺灣正體</item>
+        <item>簡體到繁體,並轉換爲臺灣常用詞彙</item>
+        <item>繁體到香港繁體</item>
+        <item>繁體到簡體</item>
+        <item>繁體臺灣正體</item>
+        <item>臺灣正體到簡體</item>
+        <item>臺灣正體到簡體,並轉換爲中國大陸常用詞彙</item>
+    </string-array>
 </resources>
