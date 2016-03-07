@@ -1,5 +1,27 @@
 apply plugin: 'com.android.model.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'lib-opencc-android'
+
+    publishedGroupId = 'com.zqc.opencc.android.lib'
+    libraryName = 'lib-opencc-android'
+    artifact = 'lib-opencc-android'
+    libraryDescription = 'An Android library project for conversion between Traditional and Simplified Chinese'
+
+    siteUrl = 'https://github.com/qichuan/android-opencc'
+    gitUrl = 'https://github.com/qichuan/android-opencc.git'
+    libraryVersion = '0.1.0'
+
+    developerId = 'qichuan'
+    developerName = 'Zhang Qichuan'
+    developerEmail = 'qichuan@zhangqichuan.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 model {
     android {
         compileSdkVersion = 23
@@ -9,17 +31,24 @@ model {
             minSdkVersion.apiLevel = 15
             targetSdkVersion.apiLevel = 23
         }
-    }
-    /*
-    * native build settings
-     */
-    android.ndk {
-        moduleName = "lib-opencc-android"
-        cppFlags.add("-fexceptions")
-        ldLibs.addAll(["atomic", "log", "android"])
-        stl = "c++_shared"
-    }
 
+        ndk {
+            moduleName = "lib-opencc-android"
+            cppFlags.add("-fexceptions")
+            ldLibs.addAll(["atomic", "log", "android"])
+            stl = "c++_shared"
+        }
+
+        sources {
+            main {
+                java {
+                    source {
+                        srcDir "src"
+                    }
+                }
+            }
+        }
+    }
 }
 
 dependencies {
