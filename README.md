@@ -1,5 +1,61 @@
-# android-opencc
+# Introduction
 
-An android port to the famous [OPENCC](https://github.com/BYVoid/OpenCC) library
+An Android port to [OPENCC](https://github.com/BYVoid/OpenCC), a library to convert Simplified Chinese to Traditional Chinese and vice versa. In additional, it also adopts the regional vocabulary and terminology interchangeably during conversion among Mainland China Simplified Chinese, Taiwan Traditional Chinese and Hong Kong Traditional Chinese.
 
-Under construction, coming soon.
+## Example
+```
+滑鼠裡面的矽二極體壞了，導致游標解析度降低。
+``` 
+in Traditional Taiwan Chinese
+will be converted to 
+```
+鼠标里面的硅二极管坏了，导致光标分辨率降低。
+```
+in Simplified Chinese and using Mainland China terminology
+
+# Installation
+```
+//Add a custom repository
+repositories {
+    ...
+    maven {
+        url 'https://dl.bintray.com/qichuan/maven/'
+    }
+}
+// Add the dependency
+dependencies {
+    ...
+    compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.6.0@aar'
+}
+```
+
+# Usage
+To use Chinese converter is easy, just call `ChineseConverter.convert(originalText, conversionType, context));`
+
+## Supported conversation types
+- HK2S, Traditional Chinese (Hong Kong Standard) to Simplified Chinese 香港繁體（香港小學學習字詞表標準）到簡體
+- S2HK, Simplified Chinese to Traditional Chinese (Hong Kong Standard) 簡體到香港繁體（香港小學學習字詞表標準）
+- S2T, Simplified Chinese to Traditional Chinese 簡體到繁體
+- S2TW, Simplified Chinese to Traditional Chinese (Taiwan Standard) 簡體到臺灣正體
+- S2TWP, Simplified Chinese to Traditional Chinese (Taiwan Standard) with Taiwanese idiom 簡體到繁體（臺灣正體標準）並轉換爲臺灣常用詞彙
+- T2HK, Traditional Chinese to Traditional Chinese (Hong Kong Standard) 繁體到香港繁體（香港小學學習字詞表標準）
+- T2S, Traditional Chinese to Simplified Chinese 繁體到簡體
+- T2TW, Traditional Chinese to Traditional Chinese (Taiwan Standard) 繁體臺灣正體
+- TW2S, Traditional Chinese (Taiwan Standard) to Simplified Chinese 臺灣正體到簡體
+- TW2SP, Traditional Chinese (Taiwan Standard) to Simplified Chinese with Mainland Chinese idiom 繁體（臺灣正體標準）到簡體並轉換爲中國大陸常用詞彙
+
+# Notice
+
+android-opencc leverages on the original OpenCC project and invoke the native code via JNI, the text phrase dictionary files are shipped in the assets folder. Android NDK does not provide means to create and read file streams from directly from assets folder, therefore the dictionary files are then copied to the application data folder in the first call of `ChineseConverter.convert()`
+
+If you need to update the dictionary files in the assets folder, please remember to call `ChineseConverter.clearDictDataFolder()` once to clear the old dictionary files, so the new dictionary files will be effective in the next `ChineseConverter.convert()` call.
+
+# Compilation
+
+You need the Android NDK for compilation, please download the [NDK](http://developer.android.com/ndk/downloads/index.html) and configure the path to NDK in `local.properties` file.
+
+Feel free to feedback if there are any issues, and hope this library can be useful for you.
+
+# References
+- https://github.com/BYVoid/OpenCC
+- https://github.com/gelosie/OpenCC/tree/master/iOS
