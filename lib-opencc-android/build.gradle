@@ -11,7 +11,7 @@ ext {
 
     siteUrl = 'https://github.com/qichuan/android-opencc'
     gitUrl = 'https://github.com/qichuan/android-opencc.git'
-    libraryVersion = '0.7.0'
+    libraryVersion = '0.6.0'
 
     developerId = 'qichuan'
     developerName = 'Zhang Qichuan'
@@ -36,7 +36,7 @@ model {
             moduleName = "lib-opencc-android"
             cppFlags.add("-fexceptions")
             ldLibs.addAll(["atomic", "log", "android"])
-            stl = "c++_static"
+            stl = "c++_shared"
         }
     }
 }
