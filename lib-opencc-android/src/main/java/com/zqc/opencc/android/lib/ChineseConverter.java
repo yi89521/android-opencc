@@ -112,6 +112,7 @@ public class ChineseConverter {
     }
 
     static {
+        System.loadLibrary("c++_shared");
         System.loadLibrary("lib-opencc-android");
     }
 }
