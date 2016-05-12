@@ -11,7 +11,7 @@ ext {
 
     siteUrl = 'https://github.com/qichuan/android-opencc'
     gitUrl = 'https://github.com/qichuan/android-opencc.git'
-    libraryVersion = '0.6.0'
+    libraryVersion = '0.7.0'
 
     developerId = 'qichuan'
     developerName = 'Zhang Qichuan'
@@ -28,7 +28,7 @@ model {
         buildToolsVersion = "23.0.2"
 
         defaultConfig.with {
-            minSdkVersion.apiLevel = 15
+            minSdkVersion.apiLevel = 10
             targetSdkVersion.apiLevel = 23
         }
 
@@ -36,7 +36,7 @@ model {
             moduleName = "lib-opencc-android"
             cppFlags.add("-fexceptions")
             ldLibs.addAll(["atomic", "log", "android"])
-            stl = "c++_shared"
+            stl = "c++_static"
         }
     }
 }
