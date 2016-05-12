@@ -25,7 +25,7 @@ repositories {
 // Add the dependency
 dependencies {
     ...
-    compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.6.0@aar'
+    compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.8.0@aar'
 }
 ```
 
