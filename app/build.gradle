@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    //compile project(':lib-opencc-android')
+    compile project(':lib-opencc-android')
     compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.6.0@aar'
+    //compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.8.0@aar'
 }

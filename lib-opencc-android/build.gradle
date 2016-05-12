@@ -11,7 +11,7 @@ ext {
 
     siteUrl = 'https://github.com/qichuan/android-opencc'
     gitUrl = 'https://github.com/qichuan/android-opencc.git'
-    libraryVersion = '0.6.0'
+    libraryVersion = '0.8.0'
 
     developerId = 'qichuan'
     developerName = 'Zhang Qichuan'
