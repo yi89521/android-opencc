@@ -1,8 +1,8 @@
 apply plugin: 'com.android.model.application'
 model {
     android {
-        compileSdkVersion = 23
-        buildToolsVersion = "23.0.2"
+        compileSdkVersion = 25
+        buildToolsVersion = "25.0.2"
 
         defaultConfig.with {
             applicationId = "com.zqc.opencc.android"
@@ -27,6 +27,6 @@ repositories {
 
 dependencies {
     compile project(':lib-opencc-android')
-    compile 'com.android.support:appcompat-v7:23.2.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
     //compile 'com.zqc.opencc.android.lib:lib-opencc-android:0.8.0@aar'
 }
