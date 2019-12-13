@@ -15,17 +15,10 @@ in Simplified Chinese and using Mainland China terminology
 
 # Installation
 ```
-//Add a custom repository
-repositories {
-    ...
-    maven {
-        url 'https://dl.bintray.com/qichuan/maven/'
-    }
-}
 // Add the dependency
 dependencies {
     ...
-    compile 'com.zqc.opencc.android.lib:lib-opencc-android:1.0.0@aar'
+    implementation 'com.zqc.opencc.android.lib:lib-opencc-android:1.0.0'
 }
 ```
 
